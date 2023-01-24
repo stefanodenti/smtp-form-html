@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html5 lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>SMTP FORM</title>
+    </head>
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400);
+
+        input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+            color: #aca49c;
+            font-size: 0.875em;
+        }
+
+        input:focus::-webkit-input-placeholder, textarea:focus::-webkit-input-placeholder {
+            color: #bbb5af;
+        }
+
+        input::-moz-placeholder, textarea::-moz-placeholder {
+            color: #aca49c;
+            font-size: 0.875em;
+        }
+
+        input:focus::-moz-placeholder, textarea:focus::-moz-placeholder {
+            color: #bbb5af;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #aca49c;
+            font-size: 0.875em;
+        }
+
+        input:focus::placeholder, textarea::focus:placeholder {
+            color: #bbb5af;
+        }
+
+        input::-ms-placeholder, textarea::-ms-placeholder {
+            color: #aca49c;
+            font-size: 0.875em;
+        }
+
+        input:focus::-ms-placeholder, textarea:focus::-ms-placeholder {
+            color: #bbb5af;
+        }
+
+        /* on hover placeholder */
+
+        input:hover::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder {
+            color: #e2dedb;
+            font-size: 0.875em;
+        }
+
+        input:hover:focus::-webkit-input-placeholder, textarea:hover:focus::-webkit-input-placeholder {
+            color: #cbc6c1;
+        }
+
+        input:hover::-moz-placeholder, textarea:hover::-moz-placeholder {
+            color: #e2dedb;
+            font-size: 0.875em;
+        }
+
+        input:hover:focus::-moz-placeholder, textarea:hover:focus::-moz-placeholder {
+            color: #cbc6c1;
+        }
+
+        input:hover::placeholder, textarea:hover::placeholder {
+            color: #e2dedb;
+            font-size: 0.875em;
+        }
+
+        input:hover:focus::placeholder, textarea:hover:focus::placeholder {
+            color: #cbc6c1;
+        }
+
+        input:hover::placeholder, textarea:hover::placeholder {
+            color: #e2dedb;
+            font-size: 0.875em;
+        }
+
+        input:hover:focus::-ms-placeholder, textarea:hover::focus:-ms-placeholder {
+            color: #cbc6c1;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: #efeceb;
+            color: #7a726c;
+        }
+
+        header {
+            position: relative;
+            margin: 100px 0 25px 0;
+            font-size: 2.3em;
+            text-align: center;
+            letter-spacing: 7px;
+        }
+
+        #form {
+            position: relative;
+            width: 500px;
+            margin: 50px auto 100px auto;
+        }
+
+        input {
+            margin-bottom: 10px;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.875em;
+            width: 470px;
+            height: 50px;
+            padding: 0px 15px 0px 15px;
+
+            background: transparent;
+            outline: none;
+            color: #726659;
+
+            border: solid 1px #b3aca7;
+            border-bottom: none;
+
+            transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+        }
+
+        input:hover {
+            background: #b3aca7;
+            color: #e2dedb;
+        }
+
+        textarea {
+            margin-bottom: 10px;
+            width: 470px;
+            max-width: 470px;
+            height: 110px;
+            max-height: 110px;
+            padding: 15px;
+
+            background: transparent;
+            outline: none;
+
+            color: #726659;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.875em;
+
+            border: solid 1px #b3aca7;
+
+            transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+        }
+
+        textarea:hover {
+            background: #b3aca7;
+            color: #e2dedb;
+        }
+
+        select:hover {
+            background: #b3aca7;
+            color: #e2dedb;
+        }
+
+        select {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 15px;
+
+            background: transparent;
+            outline: none;
+
+            color: #726659;
+            font-family: 'Lato', sans-serif;
+            font-size: 0.875em;
+
+            border: solid 1px #b3aca7;
+
+            transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            -moz-transition: all 0.3s ease-in-out;
+            -ms-transition: all 0.3s ease-in-out;
+        }
+
+
+        button {
+            width: 100%;
+            padding: 5px;
+            margin-top: 20px;
+            font-family: 'Lato', sans-serif;
+            font-size: 1em;
+            color: #0055ff;
+
+            cursor: pointer;
+
+            border: solid 1px #0095ff;
+            border-top: none;
+        }
+
+        .checkbox {
+            margin-bottom: 10px;
+            width: 23px;
+            height: 23px;
+        }
+
+        button:hover {
+            color: #5a80b0;
+            background-color: rgba(191, 226, 248, 0.76);
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+    </style>
+    <script>
+        const form = document.getElementById('form');
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            const priority = document.getElementById('priority').value;
+            const cc = document.getElementById('cc').checked;
+
+            sendSMPT(name, email, subject, message, priority, cc);
+        });
+
+        function sendSMPT(name, email, subject, message, priority, cc) {
+            const nodemailer = require('nodemailer');
+
+// Crea un oggetto transporter utilizzando SMTP
+            const transporter = nodemailer.createTransport({
+                host: 'smtp.example.com',
+                port: 465,
+                secure: true, // utilizza SSL
+                auth: {
+                    user: 'yourusername',
+                    pass: 'yourpassword',
+                },
+            });
+
+// Crea l'oggetto email
+            const mailOptions = {
+                from: 'sender@example.com',
+                to: email,
+                subject: subject,
+                text: message,
+                cc: cc ? email : undefined,
+                priority: priority,
+            };
+
+// Invia l'email
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log('Email inviata: ' + info.response);
+                }
+            });
+        }
+
+
+    </script>
+    <body class="w-full">
+    <header>SMTP FORM</header>
+    <form id="form" class="w-full">
+        <label class="">Nome: <input type="text" id="name"></label><br>
+        <label class="">Email: <input type="text" id="email"></label><br>
+        <label class="">Oggetto: <input type="text" id="subject"></label><br>
+        <label class="">Messaggio: <textarea id="message"></textarea></label><br>
+        <label class="">Priorità:
+            <select id="priority">
+                <option value="low">Bassa</option>
+                <option value="normal">Normale</option>
+                <option value="high">Alta</option>
+            </select>
+        </label><br>
+        <div class="flex justify-between pt-3px ">
+            <label>Invia copia a te stesso:</label>
+            <input type="checkbox" class="checkbox" id="cc"/>
+        </div>
+        <button type="submit">Invia</button>
+    </form>
+
+    </body>
+</html5>
